@@ -1,7 +1,6 @@
 require 'hipchat'
 
-namespace :integration do
-
+namespace :jumpup do
   namespace :hipchat do
     desc "Announce the begining of the integration process to a hipchat room"
     task :announce do
@@ -19,7 +18,5 @@ namespace :integration do
 
       `MESSAGE="User #{user} finished to integrate project #{options[:appname]}. Well done pro!" bundle exec rake hipchat:send`
     end
-
   end
-
 end
