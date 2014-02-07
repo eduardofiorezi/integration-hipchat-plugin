@@ -18,10 +18,12 @@ end
 
 ## Usage
 
-1. Configure environmental variables
+1. Configure some environmental variables
 
 ```
-TODO
+HIPCHAT_TOKEN="Your token"
+HIPCHAT_ROOM="Your room"
+HIPCHAT_APP_NAME="Your project name" # used on announcement messages
 ```
 
 2. Configure integration.rake
@@ -45,14 +47,6 @@ After bundling your app, you need to change your INTEGRATION\_TASKS adding your 
       integration:coverage_verify
       integration:hipchat:finish
       integration:finish)
-
-Don't forget also to configure Rails.root/config/hipchat.yml with the following variables:
-
-     token: "<your token>"
-     room: "Your room"
-     user: "Your name" # Default to `whoami`
-     notify: true # Defaults to false
-     appname: "Your project name" # used to create announce messages
 
 ## Tasks provided
 
