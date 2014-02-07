@@ -4,7 +4,7 @@ namespace :jumpup do
   namespace :hipchat do
     desc "Announce the begining of the integration process to a hipchat room"
     task :announce do
-      user = `whoami`.chop
+      user        = `git config --get user.name`.strip
       config_file = Rails.root.join 'config', 'hipchat.yml'
       options     = YAML.load_file(config_file).symbolize_keys
 
@@ -12,7 +12,7 @@ namespace :jumpup do
     end
 
     task :finish do
-      user = `whoami`.chop
+      user        = `git config --get user.name`.strip
       config_file = Rails.root.join 'config', 'hipchat.yml'
       options     = YAML.load_file(config_file).symbolize_keys
 
