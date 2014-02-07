@@ -32,6 +32,18 @@ HIPCHAT_APP_NAME="Your project name" # used on announcement messages
 TODO
 ```
 
+## Testing
+
+Unfortunately we have no automated testing yet, so you can try running the provided
+tasks from the project's root in order to check if things are working fine:
+
+```sh
+HIPCHAT_TOKEN="123456" \
+HIPCHAT_ROOM="Company's room" \
+HIPCHAT_APP_NAME="The next Facebook" \
+bundle exec rake jumpup:hipchat:announce
+```
+
 [gem_version_badge]: https://badge.fury.io/rb/jumpup-hipchat.png
 [ruby_gems]: http://rubygems.org/gems/jumpup-hipchat
 
