@@ -64,5 +64,5 @@ After bundling your app, you need to change your INTEGRATION\_TASKS adding your 
 
 This plugin provides the following tasks
 
-  * integration:hipchat:announce
-  * integration:hipchat:finish
+  * jumpup:hipchat:announce
+  * jumpup:hipchat:finish
