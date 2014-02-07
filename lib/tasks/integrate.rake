@@ -1,41 +1,23 @@
 require 'hipchat'
 
 namespace :jumpup do
-  # REFACTOR: Extract a separate class with duplicated logic, it might also
-  #           be a goog idea to use the hipchat API directly
-  #           See: https://github.com/hipchat/hipchat-rb#api-v2
+  # REFACTOR: Extract a separate class with duplicated logic
   namespace :hipchat do
     desc "Announce the begining of the integration process to a hipchat room"
     task :announce do
       user = `git config --get user.name`.strip
+      msg  = "User #{user} started to integrate project #{ENV['HIPCHAT_APP_NAME']}"
 
-      opts = {
-        'HIPCHAT_USER' => user,
-        'NOTIFY'       => '1',
-        'MESSAGE'      => "User #{user} started to integrate project #{ENV['HIPCHAT_APP_NAME']}",
-        'ROOM'         => ENV['HIPCHAT_ROOM'],
-        'TOKEN'        => ENV['HIPCHAT_TOKEN']
-      }.reject { |k, v| v.blank? }.
-        map{|k, v| "#{k}='#{v}'" }.
-        join(" ")
-
-      `#{opts} bundle exec rake hipchat:send`
+      client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
+      client[ENV['HIPCHAT_ROOM']].send(user, msg, notify: true)
     end
 
     task :finish do
       user = `git config --get user.name`.strip
+      msg  = "User #{user} finished to integrate project #{ENV['HIPCHAT_APP_NAME']}. Well done pro!"
 
-      opts = {
-        'HIPCHAT_USER' => user,
-        'NOTIFY'       => '1',
-        'MESSAGE'      => "User #{user} started to integrate project #{ENV['HIPCHAT_APP_NAME']}",
-        'ROOM'         => ENV['HIPCHAT_ROOM'],
-        'TOKEN'        => ENV['HIPCHAT_TOKEN']
-      }.reject { |k, v| v.blank? }.
-        map{|k, v| "#{k}='#{v}'" }.
-        join(" ")
-
-      `#{opts} bundle exec rake hipchat:send`
+      client = HipChat::Client.new(ENV['HIPCHAT_TOKEN'])
+      client[ENV['HIPCHAT_ROOM']].send(user, msg, notify: true)
     end
   end
 end
