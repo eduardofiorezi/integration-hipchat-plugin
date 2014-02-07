@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "jumpup-hipchat"
   s.version     = Jumpup::Hipchat::VERSION
   s.authors     = ["HE:labs"]
-  s.email       = ["contato@helabs.com.br"]
+  s.email       = ["tech@helabs.com.br"]
   s.homepage    = "https://github.com/Helabs/jumpup-hipchat"
   s.summary     = %q{Hipchat support to integration}
   s.description = %q{Few rake tasks created to notify deployments made with jumpup}
