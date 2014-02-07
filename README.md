@@ -6,7 +6,7 @@ This plugin adds hipchat notifications support to [Jumpup](https://github.com/He
 Its a small set of rake tasks that can be used along with Jupmup so it can
 interact with hipchat during the integration process.
 
-## Installatioin
+## Installation
 
 Add to your Gemfile:
 
